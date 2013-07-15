@@ -2,6 +2,8 @@
 
 Simple synchronous queue to get around V8 issue with very large arrays as queues.
 
+[Beware using JS Arrays as FIFO queues when your queue exceeds over 100k items](https://gist.github.com/dfellis/5986471) InfiniQueue is here to help!
+
 ## Quick install instructions
 
 For Node.js
