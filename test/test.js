@@ -20,7 +20,7 @@ function naiveQueue(count) {
     var endTime = Date.now();
     var totalTime = endTime - startTime;
     var perf = 1000*count / totalTime;
-    console.log('naiveQueue', count, ':', totalTime, 'ms', perf, 'items/sec');
+    console.log('naiveQueue ' + count + ': ' + totalTime + 'ms ' + perf + ' items/sec');
     return perf;
 }
 
@@ -37,7 +37,7 @@ function infiniQueue(count) {
     var endTime = Date.now();
     var totalTime = endTime - startTime;
     var perf = 1000*count / totalTime;
-    console.log('infiniQueue', count, ':', totalTime, 'ms', perf, 'items/sec');
+    console.log('infiniQueue ' + count + ': ' + totalTime + 'ms ' + perf + ' items/sec');
     queue.shutdown();
     return perf;
 }
