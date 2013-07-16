@@ -3,10 +3,10 @@ jscoverage.enableCoverage(true);
 var InfiniQueue = jscoverage.require(module, '../lib/infiniqueue');
 var coveralls = require('coveralls');
 var tests = require('./test');
-tests.getInfiniQueue(InfiniQueue);
+tests.getInjectedVals(InfiniQueue, 200000);
 
 for(var key in tests) {
-    if(key !== 'getInfiniQueue') exports[key] = tests[key];
+    if(key !== 'getInjectedVals') exports[key] = tests[key];
 }
 
 exports.jscoverage = function(test) {

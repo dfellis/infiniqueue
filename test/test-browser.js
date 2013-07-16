@@ -1,8 +1,8 @@
 var tape = require('tape');
 var InfiniQueue = require('../lib/infiniqueue');
 var tests = require('./test');
-tests.getInfiniQueue(InfiniQueue);
+tests.getInjectedVals(InfiniQueue, 400000);
 
 for(var key in tests) {
-    if(key !== 'getInfiniQueue') tape(key, tests[key]);
+    if(key !== 'getInjectedVals') tape(key, tests[key]);
 }

@@ -1,4 +1,4 @@
-var InfiniQueue;
+var InfiniQueue, BigArr;
 
 function stretchMemory(count) {
     var arr = [];
@@ -47,19 +47,20 @@ function bootstrap(test) {
     test.done = test.done || test.end;
 }
 
-exports.getInfiniQueue = function(iq) {
+exports.getInjectedVals = function(iq, big) {
     InfiniQueue = iq;
+    BigArr = big;
 };
 
 exports.testPerf = function(test) {
     bootstrap(test);
     test.expect(2);
-    stretchMemory(400000);
+    stretchMemory(BigArr);
     var naive100k = naiveQueue(100000);
-    var naive200k = naiveQueue(400000);
-    test.ok(naive100k > naive200k, 'if this fails InfiniQueue is unnecessary');
+    var naiveBig = naiveQueue(BigArr);
+    test.ok(naive100k > naiveBig, 'if this fails InfiniQueue is unnecessary');
     infiniQueue(100000);
-    var infini200k = infiniQueue(400000);
-    test.ok(infini200k > naive200k, 'InfiniQueue is faster than a naive queue');
+    var infiniBig = infiniQueue(BigArr);
+    test.ok(infiniBig > naiveBig, 'InfiniQueue is faster than a naive queue');
     test.done();
 };
