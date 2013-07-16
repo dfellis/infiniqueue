@@ -53,14 +53,13 @@ exports.getInfiniQueue = function(iq) {
 
 exports.testPerf = function(test) {
     bootstrap(test);
-    test.expect(3);
-    stretchMemory(200000);
+    test.expect(2);
+    stretchMemory(400000);
     var naive100k = naiveQueue(100000);
-    var naive200k = naiveQueue(200000);
+    var naive200k = naiveQueue(400000);
     test.ok(naive100k > naive200k, 'if this fails InfiniQueue is unnecessary');
-    var infini100k = infiniQueue(100000);
-    var infini200k = infiniQueue(200000);
-    test.ok(naive100k > infini100k, 'InfiniQueue is not magic');
+    infiniQueue(100000);
+    var infini200k = infiniQueue(400000);
     test.ok(infini200k > naive200k, 'InfiniQueue is faster than a naive queue');
     test.done();
 };
