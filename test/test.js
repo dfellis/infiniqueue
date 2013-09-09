@@ -60,7 +60,7 @@ exports.testPerf = function(test) {
     var naiveBig = naiveQueue(BigArr);
     test.ok(naive100k > naiveBig, 'if this fails InfiniQueue is unnecessary');
     infiniQueue(100000);
-    var infiniBig = infiniQueue(BigArr);
+    var infiniBig = infiniQueue(BigArr*10);
     test.ok(infiniBig > naiveBig, 'InfiniQueue is faster than a naive queue');
     test.done();
 };
