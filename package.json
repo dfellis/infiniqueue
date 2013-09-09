@@ -4,7 +4,7 @@
 	"keywords": ["queue", "infiniqueue"],
 	"homepage": "http://dfellis.github.com/infiniqueue",
 	"author": "David Ellis",
-	"version": "0.0.9",
+	"version": "0.1.0",
 	"bugs": "https://github.com/dfellis/infiniqueue/issues",
 	"repository": {
 		"type": "git",
@@ -27,7 +27,7 @@
 	},
 	"scripts": {
 		"realpublish": "./prepublish.sh && npm publish",
-		"test": "npm run jshint && nodeunit ./test/test-node.js",
+		"test": "npm run jshint && nodeunit ./test/test-node-perf.js && nodeunit ./test/test-node.js",
         "testbrowser": "tape ./test/test-browser.js",
         "jshint": "./test/jshint.sh"
 	},

@@ -52,6 +52,53 @@ exports.getInjectedVals = function(iq, big) {
     BigArr = big;
 };
 
+exports.enqueueDequeue = function(test) {
+    bootstrap(test);
+    test.expect(4);
+    var testQueue = new InfiniQueue();
+    test.equal(testQueue.length, 0);
+    testQueue.enqueue(5);
+    test.equal(testQueue.length, 1);
+    test.equal(testQueue.dequeue(), 5);
+    test.equal(testQueue.length, 0);
+    test.done();
+};
+
+exports.enqueueOrder = function(test) {
+    bootstrap(test);
+    test.expect(8);
+    var testQueue = new InfiniQueue();
+    testQueue.enqueue(1);
+    testQueue.enqueue(2);
+    testQueue.enqueue(3);
+    testQueue.enqueue(4);
+    testQueue.enqueue(5);
+    test.equal(testQueue.length, 5);
+    test.equal(testQueue.dequeue(), 1);
+    test.equal(testQueue.dequeue(), 2);
+    test.equal(testQueue.dequeue(), 3);
+    test.equal(testQueue.dequeue(), 4);
+    test.equal(testQueue.dequeue(), 5);
+    test.equal(testQueue.dequeue(), undefined);
+    test.equal(testQueue.length, 0);
+    test.done();
+};
+
+exports.enqueueAndShutdown = function(test) {
+    bootstrap(test);
+    test.expect(2);
+    var testQueue = new InfiniQueue();
+    testQueue.enqueue(1);
+    testQueue.enqueue(2);
+    testQueue.enqueue(3);
+    testQueue.enqueue(4);
+    testQueue.enqueue(5);
+    test.equal(testQueue.length, 5);
+    testQueue.shutdown();
+    test.equal(testQueue.length, 0);
+    test.done();
+};
+
 exports.testPerf = function(test) {
     bootstrap(test);
     test.expect(2);
@@ -60,7 +107,7 @@ exports.testPerf = function(test) {
     var naiveBig = naiveQueue(BigArr);
     test.ok(naive100k > naiveBig, 'if this fails InfiniQueue is unnecessary');
     infiniQueue(100000);
-    var infiniBig = infiniQueue(BigArr*10);
+    var infiniBig = infiniQueue(BigArr*50);
     test.ok(infiniBig > naiveBig, 'InfiniQueue is faster than a naive queue');
     test.done();
 };
