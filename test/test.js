@@ -99,6 +99,19 @@ exports.enqueueAndShutdown = function(test) {
     test.done();
 };
 
+exports.enqueueDequeueWrapped = function(test) {
+    bootstrap(test);
+    test.expect(2);
+    var testQueue = new InfiniQueue();
+    testQueue.enqueue(1);
+    var wrappedVal = testQueue.dequeueWrapped();
+    test.equal(wrappedVal.val, 1);
+    testQueue.enqueueWrapped(wrappedVal);
+    test.equal(testQueue.length, 1);
+    testQueue.shutdown();
+    test.done();
+};
+
 exports.testPerf = function(test) {
     bootstrap(test);
     test.expect(2);
