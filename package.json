@@ -4,7 +4,7 @@
 	"keywords": ["queue", "infiniqueue"],
 	"homepage": "http://dfellis.github.com/infiniqueue",
 	"author": "David Ellis",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"bugs": "https://github.com/dfellis/infiniqueue/issues",
 	"repository": {
 		"type": "git",

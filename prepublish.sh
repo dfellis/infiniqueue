@@ -6,6 +6,7 @@ npm test
 docco ./lib/infiniqueue.js
 git stash
 git checkout gh-pages
+rm -rf public/
 mv docs/* .
 mv infiniqueue.html index.html
 rm -rf docs
