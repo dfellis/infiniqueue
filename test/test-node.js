@@ -6,7 +6,7 @@ var tests = require('./test');
 tests.getInjectedVals(InfiniQueue);
 
 for(var key in tests) {
-    if(key !== 'getInjectedVals' && key !== 'testPerf') exports[key] = tests[key];
+    if(key !== 'getInjectedVals' && key !== 'testPerfNode' && key !== 'testPerfBrowser') exports[key] = tests[key];
 }
 
 exports.jscoverage = function(test) {

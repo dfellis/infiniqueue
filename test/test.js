@@ -99,20 +99,23 @@ exports.enqueueAndShutdown = function(test) {
     test.done();
 };
 
-exports.enqueueDequeueWrapped = function(test) {
+exports.largeEnqueue = function(test) {
     bootstrap(test);
-    test.expect(2);
+    test.expect(1);
+    var HUGE = 2000000;
     var testQueue = new InfiniQueue();
-    testQueue.enqueue(1);
-    var wrappedVal = testQueue.dequeueWrapped();
-    test.equal(wrappedVal.val, 1);
-    testQueue.enqueueWrapped(wrappedVal);
-    test.equal(testQueue.length, 1);
+    for(var i = 0; i < HUGE; i++) {
+        testQueue.enqueue(i);
+    }
+    test.equal(testQueue.length, HUGE, 'all items enqueued');
+    while(testQueue.length) {
+        testQueue.dequeue();
+    }
     testQueue.shutdown();
     test.done();
 };
 
-exports.testPerf = function(test) {
+exports.testPerfNode = function(test) {
     bootstrap(test);
     test.expect(2);
     stretchMemory(BigArr);
@@ -122,5 +125,14 @@ exports.testPerf = function(test) {
     infiniQueue(100000);
     var infiniBig = infiniQueue(BigArr*50);
     test.ok(infiniBig > naiveBig, 'InfiniQueue is faster than a naive queue');
+    test.done();
+};
+
+exports.testPerfBrowser = function(test) {
+    bootstrap(test);
+    test.expect(1);
+    infiniQueue(100000);
+    var infiniBig = infiniQueue(BigArr*50);
+    test.ok(infiniBig > 10000, 'InfiniQueue does not collapse under pressure');
     test.done();
 };
