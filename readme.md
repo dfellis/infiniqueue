@@ -2,6 +2,8 @@
 
 [![NPM version](https://badge.fury.io/js/infiniqueue.png)](http://badge.fury.io/js/infiniqueue) [![Build Status](https://secure.travis-ci.org/dfellis/infiniqueue.png)](http://travis-ci.org/dfellis/infiniqueue) [![Dependency Status](https://gemnasium.com/dfellis/infiniqueue.png)](https://gemnasium.com/dfellis/infiniqueue) [![Coverage Status](https://coveralls.io/repos/dfellis/infiniqueue/badge.png?branch=master)](https://coveralls.io/r/dfellis/infiniqueue?branch=master)
 
+[![browser support](https://ci.testling.com/dfellis/infiniqueue.png)](https://ci.testling.com/dfellis/infiniqueue)
+
 Simple synchronous queue to get around V8 issue with very large arrays as queues.
 
 [Beware using JS Arrays as FIFO queues when your queue exceeds over 100k items](https://gist.github.com/dfellis/5986471) Infiniqueue is here to help!
